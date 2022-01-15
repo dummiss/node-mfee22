@@ -7,11 +7,13 @@ const { readFile } = require("fs/promises");
 (async () => {
   try {
     // 根據變數去抓取資料
-    let queryDate = "20220115";
-   
+
+    let today= new Date();
+    let queryDate=today.getFullYear+(today.getMonth()+1)+today.getDate();
+
     let result = await readFile("stock.txt", "utf-8")
     let stockNo = result;
-    
+
     let response = await axios.get(
       "https://www.twse.com.tw/exchangeReport/STOCK_DAY",
       {
